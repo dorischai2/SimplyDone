@@ -17,6 +17,7 @@ namespace toDoProject{
         std::string fileName {};
     public:
         toDoList() {};
+        toDoList(std::string filenm);
 
         void getFileName();
         
