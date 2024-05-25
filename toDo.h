@@ -1,14 +1,26 @@
 #include <fstream>
+#include <string>
 
 namespace toDoProject{
-    const int MAX_ITEM_LEN = 100;
-    const int MAX_FILENAME_LEN = 50;
+
     struct toDo //struct instead of class because access is required for operators
     {
-        char status[5];
-        char item[MAX_ITEM_LEN];
+        std::string status;
+        std::string item;
 
         toDo& operator<<(std::fstream& f);
+    };
+
+    class toDoList {
+        int itemCount {0};
+        toDo* tdArr {nullptr};
+        std::string fileName {};
+    public:
+        toDoList() {};
+
+        void getFileName();
+        
+
     };
     //Return a int within given range
     int getInt(int min, int max);

@@ -26,11 +26,11 @@ namespace toDoProject {
         return val;
     }
 
-    void getFileName(char* filename)
+    void toDoList::getFileName()
     {
         cout << "Enter the name of the to do list you wish to open\n"
                 ": ";
-        cin >> filename;
+        getline(cin, fileName);
     }
 
     void viewList()
