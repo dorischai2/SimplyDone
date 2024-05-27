@@ -2,13 +2,21 @@
 #include <string>
 
 namespace toDoProject{
+    const std::string statusArr[3] = {"NEW", "WIP", "Done"};
 
     struct toDo //struct instead of class because access is required for operators
     {
-        std::string status;
-        std::string item;
+        std::string status {};
+        std::string item {};
+        // no constructor needed for now
 
-        toDo& operator<<(std::fstream& f);
+        // display to cout
+        std::iostream& display(std::iostream& os) const;
+
+        // write to file
+        std::fstream& write(std::fstream& of) const;
+
+        //toDo& operator<<(std::fstream& f); -- this should be in toDoList perhaps
     };
 
     class toDoList {
@@ -17,7 +25,7 @@ namespace toDoProject{
         std::string fileName {};
     public:
         toDoList() {};
-        toDoList(std::string filenm);
+        toDoList(std::string fileNm);
 
         void getFileName();
         

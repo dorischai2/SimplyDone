@@ -1,15 +1,26 @@
 #include <fstream>
 #include <iostream>
+#include <iomanip>
 #include "toDo.h"
 
 using namespace std;
 namespace toDoProject {
 
-    toDo& toDo::operator<<(std::fstream& f)
-    {
-        f.getline(status, 5);
-        return *this;
+    iostream& toDo::display(iostream& os) const {
+        os << left << setw(6) << status << "  " << left << item;
+        return os;
     }
+
+    fstream& toDo::write(fstream& of) const {
+        of << status << ',' << item;
+        return of;
+    }
+
+    // toDo& toDo::operator<<(std::fstream& f)
+    // {
+    //     f.getline(status, 5);
+    //     return *this;
+    // }
 
     int getInt(int min, int max)
     {
@@ -17,7 +28,7 @@ namespace toDoProject {
         cin >> val;
         while (cin.fail() || val < min || val > max)
         {
-            cout << "Invalid integer input, try again: ";
+            cout << "Number should be between " << min << " and " << max << ": ";
             cin.clear();
             cin.ignore(12000, '\n'); //flush buffer
             cin >> val;
@@ -35,43 +46,43 @@ namespace toDoProject {
 
     void viewList()
     {
-        int numOfItems = 0;
-        char filename[MAX_FILENAME_LEN]; 
-        toDo* toDoList = nullptr;
+        // int numOfItems = 0;
+        // char filename[MAX_FILENAME_LEN]; 
+        // toDo* toDoList = nullptr;
 
-        getFileName(filename);
-        fstream file(filename, ios::in);
+        // getFileName(filename);
+        // fstream file(filename, ios::in);
 
-        if (file.is_open())
-        {
-            char line[100];
-            if(file.peek() != EOF)
-            {
-                if (file >> numOfItems) //probably need some safeguard here
-                {
+        // if (file.is_open())
+        // {
+        //     char line[100];
+        //     if(file.peek() != EOF)
+        //     {
+        //         if (file >> numOfItems) //probably need some safeguard here
+        //         {
                     
-                }
+        //         }
                 
-                // toDoList = new toDo[numOfItems];
-                cout << "\n*** Doris's To Do List ***" << endl;
-                cout << "There are " << numOfItems << " of items\n";
-                while (file.getline(line, 100))
-                {
-                    cout << line << endl;
-                }
-                cout <<"*** End of list ***\n"<< endl;
-            }
-            else
-            {
-                cout << "\nTo Do list is empty!\n" << endl;
-            }
-        }
-        else
-        {
-            cout << "ERROR: unable to open file :(\n";
-        }
+        //         // toDoList = new toDo[numOfItems];
+        //         cout << "\n*** Doris's To Do List ***" << endl;
+        //         cout << "There are " << numOfItems << " of items\n";
+        //         while (file.getline(line, 100))
+        //         {
+        //             cout << line << endl;
+        //         }
+        //         cout <<"*** End of list ***\n"<< endl;
+        //     }
+        //     else
+        //     {
+        //         cout << "\nTo Do list is empty!\n" << endl;
+        //     }
+        // }
+        // else
+        // {
+        //     cout << "ERROR: unable to open file :(\n";
+        // }
 
-        file.close();
+        // file.close();
     }
 
     void modifyList()

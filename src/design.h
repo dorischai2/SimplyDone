@@ -21,7 +21,11 @@ This document is purely for documenting my design of the application
 
 
 *** Application logic:
- - main will display a menu with welcome message and three menu options 
+ - main will display a menu with welcome message and a list of available to-do lists (filenames),
+ and the option to create a new list
+
+ once filename is determined, display
+ three menu options 
     - view
     - modify
     - delete
