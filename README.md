@@ -11,4 +11,4 @@ Currently working on a console to-do list application that will help user manage
 * Delete a list
 
 ## Learnings so far
-I have learned to efficiently to use 'vector' for dynamic arrays and it has made certain aspects of the project much easier. I also learned about 'filesystem' library to help me navigate file systems
+I have learned to efficiently to use 'vector' for dynamic arrays and it has made certain aspects of the project much easier. I also learned about 'filesystem' library to help me navigate the directories.
